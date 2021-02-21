@@ -1,0 +1,33 @@
+<ul>
+  <li><a href="/users">Users</a></li>
+  <li><a href="/photos">Photos</a></li>
+</ul>
+
+<h1>List of users</h1>
+
+<form action="/insert_user_record">
+  <label for="browser_username">Username</label>
+  <input id="browser_username" type="text" name="input_username" 
+    placeholder="Enter a username...">
+  <button>Add user</button>
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Details</th>
+  </tr>
+
+  <% @list_of_users.each do |a_thing| %>
+    <tr>
+    <td><%= a_thing.id %></td>
+    <td><%= a_thing.username %></td>
+    <% details_link = "/users/" + a_thing.username.to_s %>
+    <td><a href=<%= details_link %>>Show details</a></td>
+    </tr>
+  <% end %>
+
+  </table>
