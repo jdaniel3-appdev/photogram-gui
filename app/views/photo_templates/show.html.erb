@@ -37,7 +37,7 @@
     Edit photo
   </dt>
   <dd>
-      <form action="/update_photo/"<%= @the_photo.id %>>
+      <form action="/update_photo/<%= @the_photo.id %>">
       <label for="browser_input">Image</label>
       <input id="browser_input" type="text" name="input_image" 
         placeholder="Enter a URL for the image..." value=<%= @the_photo.image %>>
@@ -54,7 +54,7 @@
     Delete photo
   </dt>
   <dd>
-    <a href="/delete_photo/"<%= @the_photo.id.to_s %>>Delete this photo</a>
+    <a href="/delete_photo/<%= @the_photo.id.to_s %>">Delete this photo</a>
   </dd>
 
 </dl>
@@ -91,8 +91,8 @@
     <label for="browser_author_id">Author ID</label>
     <input id="browser_author_id" type="text" name="input_author_id">
     
-    <label for="browser_comment_id">Comment</label>
+    <label for="browser_comment">Comment</label>
     <textarea id="browser_comment" name="input_body" 
       placeholder="Enter a comment..."></textarea>
-    <button>Add comment</button>
+    <button type="submit">Add comment</button>
   </form>
