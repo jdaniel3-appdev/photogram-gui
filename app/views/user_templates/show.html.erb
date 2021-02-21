@@ -1,0 +1,55 @@
+<ul>
+  <li><a href="/users">Users</a></li>
+  <li><a href="/photos">Photos</a></li>
+</ul>
+
+<h1>
+  <%= @the_user.username %>
+</h1>
+
+<dl>
+  <dt>
+    ID
+  </dt>
+  <dd>
+    <%= @the_user.id %>
+  </dd>
+
+  <dt>
+    Edit user
+  </dt>
+  <dd>
+      <form action="/update_user/"<%= @the_user.id %>>
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="input_username"
+        placeholder="Enter a username..." value=<%= @the_user.username %>>
+      <button>Update user</button>
+    </form>
+  </dd>
+</dl>
+
+<h2>
+  Own photos (<%= @the_user.own_photos.count %>)
+</h2>
+
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+    <th>Details</th>
+  </tr>
+
+  <% @the_user.own_photos.each do |a_thing| %>
+    <tr>
+    <td><img src="<%= a_thing.image %>"></td>
+    <td><%= a_thing.poster.username %></td>
+    <td><%= a_thing.caption %></td>
+    <td><%= a_thing.updated_at %></td>
+    <% details_link = "/photos/" + a_thing.id.to_s %>
+    <td><a href=<%= details_link %>>Show details</a></td>
+    </tr>
+  <% end %>
+
+  </table>
